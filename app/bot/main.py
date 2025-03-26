@@ -50,7 +50,7 @@ wait = WebDriverWait(browser, 5)
 button__people = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="355fbd79-3ba2-4554-8f2d-0300fde91f30"]')))
 button__people.click()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Pega o diretório do script atual
-RESOURCE_DIR = os.path.join(BASE_DIR, "resource")  # Caminho absoluto para a pasta resource
+RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/resource")  # Caminho absoluto para a pasta resource
 source = pd.read_excel(os.path.join(RESOURCE_DIR, "Planilha1.xlsx"))
 if "Nome" in source.columns:
     nomes = source["Nome"].dropna()  # Remove valores vazios
@@ -81,7 +81,7 @@ for index, row in source.iterrows():
     search.send_keys(Keys. DELETE)
 # Salvar os dados atualizados em um novo arquivo Excel
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Pega o diretório do script atual
-RESOURCE_DIR = os.path.join(BASE_DIR, "result")  # Caminho absoluto para a pasta resource
+RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/result")  # Caminho absoluto para a pasta resource
 source.to_excel(os.path.join(RESOURCE_DIR, "Planilha1_atualizada.xlsx"), index=False)
 main_logger.info("Planilha salva com sucesso!")
 time.sleep(2)

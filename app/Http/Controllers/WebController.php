@@ -28,4 +28,10 @@ class WebController extends Controller
 
         return response()->json(['message' => 'Nenhum arquivo enviado'], 400);
     }
-}  
+    public function endLine(){
+        return view('web.index2');
+    }
+    public function download(){
+        return response()->download(file: storage_path().'/app/private/bot/result/Planilha1_atualizada.xlsx');
+}
+}

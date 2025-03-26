@@ -63,6 +63,7 @@
             .then(response => response.json())
             .then(data => {
                 alert(data.message); // Exibe a resposta
+                window.location.href = '/loading';
             })
             .catch(error => {
                 console.error("Erro no upload:", error);

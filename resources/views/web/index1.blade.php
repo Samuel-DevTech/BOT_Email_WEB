@@ -42,6 +42,7 @@
                 console.error("Erro ao iniciar o bot:", error); 
             }
         });
+        window.location.href = '/final';
     });
     </script>
 </body>

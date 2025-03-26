@@ -15,7 +15,7 @@
             <div class="container__title">
                 <h1>E-mails encontrados. <br>Planilha gerada com sucesso!</h1>
             </div>
-            <a id="download-btn" href="../bot/result/Planilha1_atualizada.xlsx" download>
+            <a id="download-btn" href="/download-result">
                 <div class="container__button">
                     <p>Acesse sua planilha atualizada</p>
                 </div>
