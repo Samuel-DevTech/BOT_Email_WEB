@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #AFAFAF;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    width: 80vw;
+    height: 60vh;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.container__title {
+    display: flex;
+    color: #ff7f29;
+    font-size: 24px;
+    border-bottom: 2px solid #ff7f29;
+}
+
+.container--drop {
+    display: flex;
+    position: relative;
+    border: 2px dashed #AFAFAF;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60vw;
+    height: 55vh;
+}
+
+.container--drop.is-active {
+    background-color: #f0f0f0;
+    border-color: #ff7f29;
+}
+
+.file-input {
+    display: none;
+}
+
+.container--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff7f29;
+    color: white;
+    border-radius: 5px;
+    width: 220px;
+    height: 30px;
+}
+
+.container--delete {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+}
+
+.container--send {
+    margin-top: 20px;
+}
+
+.container--send button {
+    padding: 10px 20px !important;
+    background-color: #ff7f29 !important;
+    color: white !important;
+    border: none !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+    font-size: 16px !important;
+}
