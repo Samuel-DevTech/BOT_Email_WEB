@@ -14,7 +14,7 @@
             <h1>BEM VINDO</h1>
         </div>
         <div class="container__mensage">
-            <p>Insira abaixo o Excel contendo os nomes para a pesquisa</p>
+            <p>Insira abaixo o Excel contendo os nomes para a pesquisa e clique em iniciar</p>
         </div>
 
         <!-- Área de arrastar e soltar -->

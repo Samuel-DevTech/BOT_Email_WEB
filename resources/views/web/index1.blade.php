@@ -35,12 +35,6 @@
         $.ajax({
             url: "http://127.0.0.1:8000/api/start",  // Ajuste se necessário
             type: "POST",
-            success: function(response) {
-                console.log(response.message);  // Exibe a resposta do servidor no console
-            },
-            error: function(xhr, status, error) {
-                console.error("Erro ao iniciar o bot:", error); 
-            }
         });
         window.location.href = '/final';
     });

@@ -15,14 +15,22 @@
             <div class="container__title">
                 <h1>E-mails encontrados. <br>Planilha gerada com sucesso!</h1>
             </div>
-            <a id="download-btn" href="/download-result">
+            <a id="download-btn" href="#">
                 <div class="container__button">
                     <p>Acesse sua planilha atualizada</p>
                 </div>
             </a>
-        </div>
-        <div class="close">
-            <p>Clique no X para fechar</p>
+            <script>
+                document.getElementById("download-btn").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    
+                    window.location.href = "/download-result";
+                    
+                    setTimeout(function(){
+                        window.location.href = "/delete";
+                    }, 1500);
+                });
+            </script>
         </div>
     </main>
 </body>
