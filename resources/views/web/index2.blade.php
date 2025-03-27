@@ -11,10 +11,11 @@
 </head>
 <body>
     <main class="container">
-        <div class="container--info">
-            <div class="container__title">
-                <h1>E-mails encontrados. <br>Planilha gerada com sucesso!</h1>
-            </div>
+        <div class="container__central">
+            <div class="container--info">
+                <div class="container__title">
+                    <h1>E-mails encontrados. <br>Planilha gerada com sucesso!</h1>
+                </div>
             <a id="download-btn" href="#">
                 <div class="container__button">
                     <p>Acesse sua planilha atualizada</p>
@@ -31,7 +32,15 @@
                     }, 1500);
                 });
             </script>
+            </div>
+        <div class="container--buttons">
+            <a id="home" href="/">
+                <div class="container__return">
+                    <p>Voltar ao inicio</p>
+                </div>
+            </a>
         </div>
+        </div>  
     </main>
 </body>
 </html>

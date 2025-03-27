@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from authentication import authentication
 from ColoredFormatter import ColoredFormatter
 
-#configuração do logger
+# configuração do logger
 main_logger = logging.getLogger("MainLogger")
 main_logger.setLevel(logging.INFO)
 main_logger.handlers.clear()
@@ -28,19 +28,15 @@ file_handler = logging.FileHandler(log_filename, encoding="utf-8")
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 main_logger.addHandler(file_handler)
 
-
 main_logger.info('\n***************✔ ROTINA INICIADA ✔***************\n')
 
 def remover_espacos_extras(texto):
     """Remove espaços extras nos textos"""
-    # O método split() divide a string em uma lista de palavras, ignorando espaços extras (inclusive quebras de linha, tabs, etc.)
-    palavras = texto.split()
-    # Junta as palavras com um único espaço
+    palavras = texto.split()  # Divide e remove espaços extras
     return " ".join(palavras)
 
-
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
+# options.add_argument("--headless")
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 browser.get("https://outlook.office.com/mail/")
 main_logger.info("Abrindo o outlook")
@@ -49,10 +45,8 @@ authentication(browser, main_logger)
 wait = WebDriverWait(browser, 5)
 button__people = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="355fbd79-3ba2-4554-8f2d-0300fde91f30"]')))
 button__people.click()
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Pega o diretório do script atual
-# RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/resource")  # Caminho absoluto para a pasta resource
-# source = pd.read_excel(os.path.join(RESOURCE_DIR, "Planilha1.xlsx"))
 
+# Procurando a planilha
 main_logger.info("Procurando Planilha")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/resource")
@@ -99,16 +93,26 @@ else:
 search = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[2]/div[1]/div/div/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div/div/div/div/div/div/input')))
 search.click()
 main_logger.info("Iniciando pesquisas")
+
+# Alteração para digitar nome por nome
 for index, row in source.iterrows():
     colaborador = row["Nome"]
-    dirty_text = colaborador
-    clear_text = remover_espacos_extras(dirty_text)
-    search.send_keys(clear_text)
-    time.sleep(3) #não remover
+    nome_partes = colaborador.split()  # Divide o nome completo em partes (ex: primeiro nome, sobrenome)
+    
+    # Limpar o campo de pesquisa antes de digitar um novo nome
+    search.send_keys(Keys.CONTROL + "a")
+    search.send_keys(Keys.DELETE)
+    
+    # Digita parte por parte do nome, incluindo espaços entre as partes
+    for parte in nome_partes:
+        clear_text = remover_espacos_extras(parte)  # Limpa espaços extras
+        search.send_keys(clear_text + " ")  # Digita a parte do nome seguida de um espaço
+        time.sleep(1)  # Pausa entre as pesquisas
     try:
+        # Espera pelo e-mail correspondente ao nome completo
         email = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="searchSuggestions"]//li[contains(@id, "HubPersonaId")]//div[contains(text(),"@")]')))
         email = email.text
-        main_logger.info(f"✅ E-mail encontrado {email}")
+        main_logger.info(f"✅ E-mail encontrado para {colaborador}: {email}")
         if "E-mail" not in source.columns:
             source["E-mail"] = ""
         source["E-mail"] = source["E-mail"].astype(str)
@@ -116,14 +120,17 @@ for index, row in source.iterrows():
     except Exception:
         main_logger.error(f"❌ Nenhum e-mail encontrado para {colaborador}")
         source.at[index, "E-mail"] = "Não encontrado"
-    search.send_keys(Keys. CONTROL + "a")
-    search.send_keys(Keys. DELETE)
+
+    # Limpa o campo de pesquisa para o próximo colaborador
+    search.send_keys(Keys.CONTROL + "a")
+    search.send_keys(Keys.DELETE)
+
 # Salvar os dados atualizados em um novo arquivo Excel
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Pega o diretório do script atual
 RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/result")  # Caminho absoluto para a pasta resource
 source.to_excel(os.path.join(RESOURCE_DIR, "Planilha1_atualizada.xlsx"), index=False)
 main_logger.info("Planilha salva com sucesso!")
+
 time.sleep(1)
 main_logger.info('\n*************** ROTINA FINALIZADA ***************\n')
 browser.quit()
-

@@ -18,7 +18,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
     align-items: center;
     background-color: #fff;
@@ -27,11 +27,19 @@ body {
     padding: 30px;
     border-radius: 10px;
 }
+.container__central{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    height: 300px;  
+}
 .container--info{
     display: flex;
     text-align: center;
     height: 180px;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
 }
 .container a{
@@ -46,6 +54,12 @@ body {
     text-decoration: none;
     color: inherit;
 }
+.container--buttons{
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    justify-content: space-between;
+}
 .container__button{
     padding: 10px 20px;
     background-color: #ff7f29;
@@ -55,6 +69,18 @@ body {
     font-size: 16px;
 }
 .close p{
+    font-size: larger;
+    font-weight: bold;
+}
+.container__return{
+    padding: 10px 20px;
+    background-color: #ff7f29;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+}
+.container__return p{
     font-size: larger;
     font-weight: bold;
 }
