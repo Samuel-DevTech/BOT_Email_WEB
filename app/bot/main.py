@@ -36,7 +36,7 @@ def remover_espacos_extras(texto):
     return " ".join(palavras)
 
 options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
+options.add_argument("--headless")
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 browser.get("https://outlook.office.com/mail/")
 main_logger.info("Abrindo o outlook")

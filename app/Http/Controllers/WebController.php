@@ -50,4 +50,7 @@ class WebController extends Controller
     }
     return response()->noContent();
     }
+    public function modal(){
+        return view('componentes.modal');
+    }
 }

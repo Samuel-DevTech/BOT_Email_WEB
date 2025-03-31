@@ -14,19 +14,20 @@
         <div class="container__central">
             <div class="container--info">
                 <div class="container__title">
-                    <h1>E-mails encontrados. <br>Planilha gerada com sucesso!</h1>
+                    <h1>Processo finalizado. <br>Planilha gerada com sucesso!</h1>
                 </div>
             <a id="download-btn" href="#">
                 <div class="container__button">
                     <p>Acesse sua planilha atualizada</p>
                 </div>
             </a>
+
             <script>
                 document.getElementById("download-btn").addEventListener("click", function(event) {
                     event.preventDefault();
-                    
+
                     window.location.href = "/download-result";
-                    
+                    ativarModal("Sucesso!", "Download concluido com sucesso", "normal");
                     setTimeout(function(){
                         window.location.href = "/delete";
                     }, 1500);
@@ -42,5 +43,6 @@
         </div>
         </div>  
     </main>
+    @include('componentes.modal')
 </body>
 </html>

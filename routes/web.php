@@ -9,4 +9,6 @@ Route::get('/final', [WebController::class,'endLine']);
 Route::post('/upload-file', [WebController::class, 'uploadFile']);
 Route::get('/download-result', [WebController::class,'download']);
 Route::get('/delete',[WebController::class,'deleteFile']);
+
+Route::get('/teste', [WebController::class,'modal']);
     

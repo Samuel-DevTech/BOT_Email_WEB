@@ -37,38 +37,7 @@
         </div>        
     </main>
 
-    <script>
-        // Função para enviar o arquivo
-        document.getElementById("start-button").addEventListener("click", function(event) {
-            event.preventDefault();
-
-            let fileInput = document.getElementById('file-input');
-            let file = fileInput.files[0];
-
-            if (!file) {
-                alert("Selecione um arquivo primeiro!");
-                return;
-            }
-
-            let formData = new FormData();
-            formData.append('file', file);
-
-            fetch('/upload-file', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message); // Exibe a resposta
-                window.location.href = '/loading';
-            })
-            .catch(error => {
-                console.error("Erro no upload:", error);
-            });
-        });
-    </script>
+    <!-- Inclusão do Modal (componente Blade) -->
+    @include('componentes.modal')
 </body>
 </html>

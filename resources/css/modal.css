@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.modal{
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index:200;
+
+    display: none;
+}
+.mHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #e90000;
+    font-size: 30;
+}
+.mHeader i{
+    padding-right: 5px;
+}
+.mBody{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 20px 5px;
+    border-top: 1px solid #c4c4c4;
+}
+footer button{
+    padding: 5px 5px;
+    background-color: #ffcece;
+    border: 0px;
+    border-radius: 10px;
+    width: 90px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    
+    transition: 0.5s;
+}
+footer button:hover{
+    background-color: #e90000;
+    color:#ffffff;
+}
+.modalShadow{
+    position: absolute;
+    inset:0;
+    background-color: rgba(0, 0, 0, 0.438);
+    z-index:100;
+
+    display:none;
+}
+@keyframes modalIn{
+    from{
+        transform: translate(-50%, -115%);
+    }
+    to{
+        transform: translate(-50%, 0);
+    }
+}
+@keyframes modalOut{
+    from{
+        transform: translate(-50%, 0);
+    }
+    to{
+        transform: translate(-50%, -115%);
+    }
+}
+@keyframes msIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes msOut{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
