@@ -32,7 +32,13 @@ class WebController extends Controller
         return view('web.index2');
     }
     public function download(){
-        return response()->download(file: storage_path().'/app/private/bot/result/Planilha1_atualizada.xlsx');
+        $filePath = storage_path('app/private/bot/result/Planilha1_atualizada.xlsx');
+
+        if (!file_exists($filePath)) {
+            abort(404, 'Arquivo não encontrado.');
+        }
+
+        return response()->download($filePath);
     }
     public function deleteFile(){
     $files = [

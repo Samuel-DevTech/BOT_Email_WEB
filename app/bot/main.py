@@ -18,7 +18,7 @@ main_logger = logging.getLogger("MainLogger")
 main_logger.setLevel(logging.INFO)
 main_logger.handlers.clear()
 main_logger.propagate = False
-LOG_DIR = "../app/bot/log"
+LOG_DIR = "log"
 os.makedirs(LOG_DIR, exist_ok=True)
 log_filename = os.path.join(LOG_DIR, datetime.now().strftime("%Y-%m-%d_%H-%M-%S.log"))
 console_handler = logging.StreamHandler()
@@ -49,7 +49,7 @@ button__people.click()
 # Procurando a planilha
 main_logger.info("Procurando Planilha")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/resource")
+RESOURCE_DIR = os.path.join(BASE_DIR, "../../storage/app/private/bot/resource")
 
 # Lista de extensões possíveis
 extensions = ['xlsx', 'xls', 'csv']
@@ -127,7 +127,7 @@ for index, row in source.iterrows():
 
 # Salvar os dados atualizados em um novo arquivo Excel
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Pega o diretório do script atual
-RESOURCE_DIR = os.path.join(BASE_DIR, "C:/xampp/htdocs/BOT/storage/app/private/bot/result")  # Caminho absoluto para a pasta resource
+RESOURCE_DIR = os.path.join(BASE_DIR, "../../storage/app/private/bot/result")  # Caminho absoluto para a pasta resource
 source.to_excel(os.path.join(RESOURCE_DIR, "Planilha1_atualizada.xlsx"), index=False)
 main_logger.info("Planilha salva com sucesso!")
 

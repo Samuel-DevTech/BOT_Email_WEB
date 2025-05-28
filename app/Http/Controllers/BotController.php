@@ -13,7 +13,7 @@ class BotController extends Controller
         $script = base_path('app\bot\main.py');
 
         // Executa o script Python
-        $output = shell_exec("python3 $script");
+        $output = shell_exec("python $script");
 
         return response()->json([
             'message' => 'Bot started successfully',
